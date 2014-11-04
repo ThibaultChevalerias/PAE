@@ -1,0 +1,52 @@
+\documentclass{article}
+
+
+% Liste des packages qu'on va utiliser
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}      
+\usepackage[francais]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+%\usepackage[mediumspace,mediumqspace,Grey,squaren]{SIunits}
+
+\usepackage{setspace}             % changer l'interlignage
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\usepackage{graphicx}
+
+
+% Début du document
+\begin{document}
+
+\input{./parts/page_garde.tex}
+
+\section*{Plan}
+\input{./parts/plan.tex}
+
+\section*{Résumé}
+\input{./parts/resume.tex}
+
+\section*{Abstract}
+\input{./parts/abstract.tex}
+
+\section*{Introduction}
+\input{./parts/intro.tex}
+
+\section*{Conditions expérimentales}
+\input{./parts/cond_exp.tex}
+
+\section*{Résultats}
+\input{./parts/resultats.tex}
+
+\section*{Discussion}
+\input{./parts/discussion.tex}
+
+\section*{Conclusion}
+\input{./parts/conclusion.tex}
+
+\section*{Bibliographie}
+
+
+\end{document}
