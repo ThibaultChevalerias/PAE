@@ -1,1 +1,21 @@
-...
+Pour effectuer l'étude du matériau considéré, on mesure la résistance de l'échantillon grâce à une mesure 4 pointes.
+On mesure en même temps la résistance d'un sonde de température qui a été étalonnée.
+Donc, à partir de ces données on peut en déduire la conductivité en fonction de la température.
+
+\paragraph{Pourquoi une mesure 4 pointes (et pas tout simplement 2) ?}
+La mesure 4 pointes consiste à injecter un courant avec deux pointes et de mesurer une tension avec deux autres placées entre les deux premières.
+Cette méthode permet de s'affranchir des résistances des fils et des résistances de contact.
+Elle est donc particulièrement utile pour mesurer des résistances de l'ordre de l'$\Omega$ ou inférieures, car c'est l'ordre de grandeur des résistance parasites.
+Par contre, elle est parfaitement inutile pour les hautes résistances (plusieurs k$\Omega$, M$\Omega$), donc on aurait mesuré en 2 pointes pour un isolant par exemple.
+
+\paragraph{Principe de la sonde, comment a-t-on étalonné la sonde ?}
+Nous avons étalonné la sonde Pt en deux étapes :
+    - en la plaçant dans de l'eau que nous avons fait bouillir, nous avons pu mesurer la résistance de la sonde à une température de 100°C.
+    _ en la plaçant ensuite dans de l'eau pleine de glaçons, nous avons fait la même chose pour 0°C.
+La résistance du platine augmente linéairement avec la température, c'est une propriété de ce matériau.
+On obtient alors la caratéristique R(T) : en mesurant la résistance du Platine, on peut en déduire sa température (donc idéalement la température de l'échantillon).
+
+\paragraph{Interfaçage grâce à Labview}
+Nous avons utilisé Labview pour réaliser l'acquisition des mesures de nos deux multimètres de façon synchronisée, et écrire les résultats dans un fichier lisible par Excel (ou gnuplot).
+Nous l'avons utilisé pour la mesure sur le Cuivre, mais nous l'avons ensuite abandonné pour la mesure sur le Silicium pour éliminer les sources potentielles de problèmes (on a simplifié le montage au maximum).
+[Parler du code et des avantages de Labview]
