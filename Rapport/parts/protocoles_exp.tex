@@ -50,13 +50,17 @@ On obtient alors la caratéristique R(T) : en mesurant la résistance du Platine
 
 
 \paragraph*{Interfaçage grâce à Labview}
+L'utilisation de l'outil informatique pour mener à bien l'éxpérience été sous-entendu pour cet AE et en constituait une des principales caractéristiques.En effet notre encadrant nous avait fortement recommandé d'automatiser les mesures pour faciliter la prise de donnée tout en gagnant en savoir faire expérimental. L'outil de prédiléction pour ce type de mesures est le logiciel LabView qui permet de réaliser de l'acquisition de donnée. Nous avons donc décidé d'utiliser ce logiciel. Le but était de pouvoir contrôler les deux flukes avec l'ordinateur. La prise de donnée par voie informatique comporte trois volés que nous avons du nous approprier successivement: la connection des appareils à l'ordinateur, leur reconnaissance par ce dernier et le codage du code LabView. La première étape a été réalisée grâce à deux cables smart488, dont un des deux il a fallu commander. Ces câbles permettent le passage d'une sortie GPIB a une sortie USB et possèdent un contrôleur intégré. C'est ce controlleur qu'il a fallu régler, grâce à un logiciel dédié, pour pouvoir détecter les deux fluke par l'ordinateur. On a aussi utilisé le logiciel NiMax pour vérifier la compatibilité avec Labview. Après cela on a entamé l'étape d'écriture du code graphique Labview. Ce code devait nous permettre d'acquérir ..
+[Ajouter photo du code et de la "face avant" de labview + photo cable smart488]
+
 Nous avons utilisé Labview pour réaliser l'acquisition des mesures de nos deux multimètres de façon synchronisée, et écrire les résultats dans un fichier lisible par Excel (ou gnuplot).
 Nous l'avons utilisé pour la mesure sur le Cuivre, mais nous l'avons ensuite abandonné pour la mesure sur le Silicium pour éliminer les sources potentielles de problèmes (on a simplifié le montage au maximum).
 [Parler du code et des avantages de Labview]
 
 
 \section*{Difficultés expérimentales}
-
+Deux principales difficultées éxpérimentales principales se sont posées lors de cette activité expérimentale. 
+Tout d'abord il y a eut le problème de l'automatisation des résultats et de l'interfaçage avec l'ordinateur. 
 
 \section*{Résultats}
 Pour le Cuivre, nous avons simplement observé que la conductivité diminue quand on augmente la température (voir courbe).
