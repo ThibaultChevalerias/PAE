@@ -3,38 +3,69 @@ Pour effectuer l'étude du matériau considéré, on mesure la résistance de l'
 On mesure en même temps la résistance d'un sonde de température qui a été étalonnée.
 Donc, à partir de ces données on peut en déduire la conductivité en fonction de la température.
 
+
+Nous avons commencé avec une mesure sur un conducteur pour partir sur quelque chose de simple.
+La tendance attendue pour le Cuivre semblait être facile à obtenir, donc nous avons débuté avec ce métal.
+
+
+Puis nous avons voulu effectué une mesure sur un semi-conducteur, nous avons donc commandé deuw wafers de Silicium (dopés n et p), et poursuivi les mesures avec ce Silicium.
+
+
 \subsection*{Schémas}
 
 \subsection*{Photos}
 
 
 \section*{Conditions expérimentales}
+Nous avons utilisé Labview pour réaliser les acquisitions des deux résistances mesurées.
+Nous avons simplement posé la plaque de Cuivre sur une plaque chauffante et mesuré sa résistance en fonction de la température en 4 pointes, entre 25°C et 205°C.
+
+
+Pour le Silicium, nous voulions détecter un palier de conductivité, et nous savions que ce palier risquait de se trouver à une température inférieure ou égale à la température ambiante.
+Donc, pour pouvoir étudier ce palier, nous avons dû baisser fortement la température et nous avons utilisé de l'azote liquide pour cela.
+Nous avons également placé des billes de verre dans notre porte-échantillon pour augmenter l'inertie thermique du montage et nous permettre d'avoir une montée en température relativement lente.
+La sonde de température a été insérée dans le porte-échantillon par un trou percé sur le côté (voir montage). De cette façon, elle peut être en contact du Silicium et être entourée par les billes de verre.
+De ce fait, elle mesure bien mieux la température du silicium que si on l'avait simplement posée dessus.
+
+
 \paragraph*{Pourquoi une mesure 4 pointes (et pas tout simplement 2) ?}
 La mesure 4 pointes consiste à injecter un courant avec deux pointes et de mesurer une tension avec deux autres placées entre les deux premières.
 Cette méthode permet de s'affranchir des résistances des fils et des résistances de contact.
 Elle est donc particulièrement utile pour mesurer des résistances de l'ordre de l'$\Omega$ ou inférieures, car c'est l'ordre de grandeur des résistance parasites.
 Par contre, elle est parfaitement inutile pour les hautes résistances (plusieurs k$\Omega$, M$\Omega$), donc on aurait mesuré en 2 pointes pour un isolant par exemple.
 
+
 \paragraph*{Principe de la sonde, comment a-t-on étalonné la sonde ?}
 Nous avons étalonné la sonde Pt en deux étapes :
+
 
 \begin{itemize}
   \item en la plaçant dans de l'eau que nous avons fait bouillir, nous avons pu mesurer la résistance de la sonde à une température de 100°C.
   \item en la plaçant ensuite dans de l'eau pleine de glaçons, nous avons fait la même chose pour 0°C.
 \end{itemize}
 
+
 La résistance du platine augmente linéairement avec la température, c'est une propriété de ce matériau.
 On obtient alors la caratéristique R(T) : en mesurant la résistance du Platine, on peut en déduire sa température (donc idéalement la température de l'échantillon).
+
 
 \paragraph*{Interfaçage grâce à Labview}
 Nous avons utilisé Labview pour réaliser l'acquisition des mesures de nos deux multimètres de façon synchronisée, et écrire les résultats dans un fichier lisible par Excel (ou gnuplot).
 Nous l'avons utilisé pour la mesure sur le Cuivre, mais nous l'avons ensuite abandonné pour la mesure sur le Silicium pour éliminer les sources potentielles de problèmes (on a simplifié le montage au maximum).
 [Parler du code et des avantages de Labview]
 
+
 \section*{Difficultés expérimentales}
 
 
 \section*{Résultats}
+Pour le Cuivre, nous avons simplement observé que la conductivité diminue quand on augmente la température (voir courbe).
+[donner un ordre de grandeur de la conductivité du Cuivre sur cette plage de température si elle est bonne]
+
+
+Pour le Silicium, nous avons observé une conductivité croissante avec la température, ce qui est cohérent. Nous avons aussi observé un palier aux alentours de [20°C; 80°C], ce qui semble cohérent aussi.
+À haute température, les contacts se sont dégradés d'où des points un peu épars...
+
 
 \subsection*{Tableaux}
 
@@ -42,6 +73,13 @@ Nous l'avons utilisé pour la mesure sur le Cuivre, mais nous l'avons ensuite ab
 
 
 \section*{Discussion des résultats}
+L'endroit où se trouve le palier paraît cohérent, pour le Si il es autour de Tamb, c'est pourquoi le Si est utilisé dans l'électronique.
+
+
+[Tu pourrais préciser ça Manu ? (c'est ce qu'on avait noté pour l'oral) : 
+Pour le fait qu'on identifie qu'il s'agit d'un échantillon dopé je parle des différentes allures de conductivités en fonction de T dans ma partie, on se raccrochera à ça.
+Pour la détermination du dopage, il faut repérer la conductivité de notre échantillon de Si à Tamb et à l'aide d'abaques en déduire le dopage (j'ai vite fait essayé, sans valeurs de conductivités précises, et je trouve un dopage de 10^20 porteurs par cm^3)
+    [double plateau, essaye de lire sur wiki pour bien comprendre on risque d'avoir des questions dessus/ le type de dopage n'est pas visible directement, peut etre en faisant un truc special avec la vitesse des porteurs mais je ne crois pas]]
 
 
 \section*{Conclusions}
