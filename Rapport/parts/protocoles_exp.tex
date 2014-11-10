@@ -1,14 +1,14 @@
 \section*{Montages}
 Pour effectuer l'étude du matériau considéré, on mesure la résistance de l'échantillon grâce à une mesure 4 pointes.
-On mesure en même temps la résistance d'un sonde de température qui a été étalonnée.
+On mesure en même temps la résistance d'une sonde de température qui a été étalonnée.
 Donc, à partir de ces données on peut en déduire la conductivité en fonction de la température.
 
 
 Nous avons commencé avec une mesure sur un conducteur pour partir sur quelque chose de simple.
-La tendance attendue pour le Cuivre semblait être facile à obtenir, donc nous avons débuté avec ce métal.
+La tendance attendue pour le Cuivre semblait être facile à obtenir (la résistance d'un métal augmente linéairement avec la température), donc nous avons débuté avec ce métal.
 
 
-Puis nous avons voulu effectué une mesure sur un semi-conducteur, nous avons donc commandé deuw wafers de Silicium (dopés n et p), et poursuivi les mesures avec ce Silicium.
+Puis nous avons voulu effectuer une mesure sur un semi-conducteur, nous avons donc commandé deux wafers de Silicium (dopés N et P), et poursuivi les mesures avec ce Silicium.
 
 
 \subsection*{Schémas}
@@ -21,7 +21,7 @@ Nous avons utilisé Labview pour réaliser les acquisitions des deux résistance
 Nous avons simplement posé la plaque de Cuivre sur une plaque chauffante et mesuré sa résistance en fonction de la température en 4 pointes, entre 25°C et 205°C.
 
 
-Pour le Silicium, nous voulions détecter un palier de conductivité, et nous savions que ce palier risquait de se trouver à une température inférieure ou égale à la température ambiante.
+Pour le Silicium, nous voulions détecter un palier de conductivité (car il s'agissait d'échantillons dopés), et nous savions que ce palier risquait de se trouver à une température inférieure ou égale à la température ambiante.
 Donc, pour pouvoir étudier ce palier, nous avons dû baisser fortement la température et nous avons utilisé de l'azote liquide pour cela.
 Nous avons également placé des billes de verre dans notre porte-échantillon pour augmenter l'inertie thermique du montage et nous permettre d'avoir une montée en température relativement lente.
 La sonde de température a été insérée dans le porte-échantillon par un trou percé sur le côté (voir montage). De cette façon, elle peut être en contact du Silicium et être entourée par les billes de verre.
@@ -29,9 +29,9 @@ De ce fait, elle mesure bien mieux la température du silicium que si on l'avait
 
 
 \paragraph*{Pourquoi une mesure 4 pointes (et pas tout simplement 2) ?}
-La mesure 4 pointes consiste à injecter un courant avec deux pointes et de mesurer une tension avec deux autres placées entre les deux premières.
+La mesure 4 pointes consiste à injecter un courant avec deux pointes et à mesurer une tension avec deux autres placées entre les deux premières.
 Cette méthode permet de s'affranchir des résistances des fils et des résistances de contact.
-Elle est donc particulièrement utile pour mesurer des résistances de l'ordre de l'$\Omega$ ou inférieures, car c'est l'ordre de grandeur des résistance parasites.
+Elle est donc particulièrement utile pour mesurer des résistances de l'ordre de l'$\Omega$ ou inférieures, car c'est l'ordre de grandeur des résistances parasites.
 Par contre, elle est parfaitement inutile pour les hautes résistances (plusieurs k$\Omega$, M$\Omega$), donc on aurait mesuré en 2 pointes pour un isolant par exemple.
 
 
@@ -50,16 +50,46 @@ On obtient alors la caratéristique R(T) : en mesurant la résistance du Platine
 
 
 \paragraph*{Interfaçage grâce à Labview}
-L'utilisation de l'outil informatique pour mener à bien l'éxpérience était prévu pour cet AE et en constituait une des principales caractéristiques. En effet notre encadrant nous avait fortement recommandé d'automatiser les mesures pour faciliter la prise de donnée tout en gagnant du savoir faire expérimental. L'outil de prédiléction pour ce type de mesures est le logiciel LabView qui permet de réaliser de l'acquisition de donnée. Nous avons donc décidé d'utiliser ce logiciel. Le but était de pouvoir contrôler les deux flukes avec l'ordinateur. La prise de donnée par voie informatique comporte trois volées que nous avons du nous approprier successivement: la connection des appareils à l'ordinateur, leur reconnaissance par ce dernier et le codage du code LabView. La première étape a été réalisée grâce à deux cables smart488, dont l'un des deux qu'il a fallu commander. Ces câbles permettent le passage d'une sortie GPIB à une sortie USB et possèdent un contrôleur intégré. C'est ce controlleur qu'il a fallu régler, grâce à un logiciel dédié, pour pouvoir détecter les deux fluke par l'ordinateur. On a aussi utilisé le logiciel NiMax pour vérifier la compatibilité avec Labview. Après cela on a entamé l'étape d'écriture du code graphique Labview. Ce code devait nous permettre d'acquérir simultanément, et dans le temps, les signaux des deux multimètres, qui correspondent à la température de la sonde et à la résistance de l'échantillon. L'acquisition se fait pendant un lapse de temps prédéfini. Les résultats obtenus sont présentés sous forme de tableau qui peut être lisible par un logiciel comme gnuplot.
+L'utilisation de l'outil informatique pour mener à bien l'expérience était prévu pour cet AE 
+et en constituait une des principales caractéristiques. En effet notre encadrant nous avait fortement recommandé 
+d'automatiser les mesures pour faciliter la prise de donnée tout en gagnant du savoir faire expérimental. L'outil de 
+prédilection pour ce type de mesure est le logiciel LabVIEW qui permet de réaliser l'acquisition des données. 
+Nous avons donc décidé d'utiliser ce logiciel. Le but était de pouvoir contrôler les deux flukes avec l'ordinateur. 
+La prise de données par voie informatique comporte trois volets que nous avons du nous approprier successivement : 
+\begin{enumerate}
+\item la connection des appareils à l'ordinateur ; 
+\item leur reconnaissance par ce dernier ; 
+\item et le codage du code LabView. 
+\end{enumerate}
+La première étape a été réalisée grâce à deux cables smart488, dont l'un des deux qu'il a fallu commander. 
+Ces câbles permettent le passage d'une sortie GPIB à une sortie USB et possèdent un contrôleur intégré. 
+C'est ce contrôleur qu'il a fallu régler, grâce à un logiciel dédié, pour pouvoir détecter les deux flukes 
+par l'ordinateur. On a aussi utilisé le logiciel NiMax pour vérifier la compatibilité avec Labview. 
+Après cela on a entamé l'étape d'écriture du code graphique Labview. Ce code devait nous permettre d'acquérir 
+simultanément, et dans le temps, les signaux des deux multimètres, qui correspondent à la température de la sonde 
+et à la résistance de l'échantillon. L'acquisition se fait pendant un laps de temps prédéfini. Les résultats obtenus sont présentés sous forme de tableau qui peut être lisible par un logiciel comme gnuplot.
 [Ajouter photo du code et de la "face avant" de labview + photo cable smart488]
 
 
 \section*{Difficultés expérimentales}
-Deux principales difficultées éxpérimentales principales se sont posées lors de cette activité expérimentale. 
-Tout d'abord il y a eut le problème de l'automatisation des résultats et de l'interfaçage avec l'ordinateur.
-On a eut du mal à réaliser chacune des trois étapes reliées à l'automatisation des mesures, mais plus particulièrement pour la détéction des instruments par l'ordinateur parce que cela mettait en jeu différents composants tels que le multimètre, le cable smart488 et labview.
-D'autre part le contact entre les éléctrodes et l'échantillon s'avéra bien plus délicat que prévu. En effet l'utilisation du montage à quatre pointes oblige à avoir quatre contacts stables. On a donc implémenté le montage tel qu'il apparait dans la figure [figure du montage]. Le premier essai sur le cuivre donna des résultats très cohérents mais les essais sur le cuivres donnaient des valeurs très instables. En effet la valeur de la résistance changeait de plusieurs ordres de grandeurs selon la pression exercée sur les pointes. On supçonait les fils ou les pointes d'être a l'origine de ces fluctuations mais on compris plus tard que cela était probablement dû à l'hétérogénité de la surface de l'échantillon de silicium. En effet le silicium au contact de l'air s'oxyde et on obtient une couche de SiO2 à la surface de l'échantillon. La variation de la résistance selon la pression exercéee sur les pointes peut donc provenir du fait que la pointe traverse où pas cette couche.
+Deux principales difficultées expérimentales se sont posées lors de cette activité expérimentale. 
+Tout d'abord il y a eu le problème de l'automatisation des résultats et de l'interfaçage avec l'ordinateur.
+On a eu du mal à réaliser chacune des trois étapes reliées à l'automatisation des mesures, mais plus particulièrement 
+pour la détection des instruments par l'ordinateur parce que cela mettait en jeu différents composants tels que le 
+multimètre, le cable smart488 et labview.
 
+D'autre part le contact entre les électrodes et l'échantillon s'avéra bien plus délicat que prévu. 
+En effet l'utilisation du montage à quatre pointes oblige à avoir quatre contacts stables. On a donc implémenté 
+le montage tel qu'il apparait dans la figure [figure du montage]. Le premier essai sur le cuivre donna des résultats 
+très cohérents mais les essais sur les échantillons de silicium donnaient des valeurs très instables. 
+En effet la valeur de la résistance changeait de plusieurs ordres de grandeurs selon la pression exercée sur les 
+pointes. On soupçonnait les fils ou les pointes d'être a l'origine de ces fluctuations 
+mais on compris plus tard que cela était probablement dû à l'hétérogénité de la surface de l'échantillon de silicium. 
+En effet le silicium au contact de l'air s'oxyde et on obtient une couche de SiO2 à la surface de l'échantillon. 
+La variation de la résistance selon la pression exercée sur les pointes peut donc provenir du fait que la pointe 
+traverse où pas cette couche.
+% /!\ non je ne pense pas que ce soit ça, c'est bien les contacts qui se modifient au cours du temps 
+% (à cause de la chaleur...). On parle de l'idée des ressorts pour améliorer ça ?
 
 \section*{Résultats}
 Pour le Cuivre, nous avons simplement observé que la conductivité diminue quand on augmente la température (voir courbe).
@@ -67,7 +97,8 @@ Pour le Cuivre, nous avons simplement observé que la conductivité diminue quan
 
 
 Pour le Silicium, nous avons observé une conductivité croissante avec la température, ce qui est cohérent. Nous avons aussi observé un palier aux alentours de [20°C; 80°C], ce qui semble cohérent aussi.
-À haute température, les contacts se sont dégradés d'où des points un peu épars...
+À haute température, on observe à nouveau une croissance de la conductivité, 
+puis les contacts se sont dégradés donc on n'a pas pu monter plus haut en température.
 
 
 \subsection*{Tableaux}
@@ -76,7 +107,7 @@ Pour le Silicium, nous avons observé une conductivité croissante avec la temp�
 
 
 \section*{Discussion des résultats}
-L'endroit où se trouve le palier paraît cohérent, pour le Si il es autour de Tamb, c'est pourquoi le Si est utilisé dans l'électronique.
+L'endroit où se trouve le palier paraît cohérent, pour le Si il est autour de la température ambiante, c'est pourquoi le Si est utilisé dans l'électronique.
 
 
 [Tu pourrais préciser ça Manu ? (c'est ce qu'on avait noté pour l'oral) : 
