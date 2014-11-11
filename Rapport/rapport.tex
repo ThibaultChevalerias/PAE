@@ -9,7 +9,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathrsfs}
-%\usepackage[mediumspace,mediumqspace,Grey,squaren]{SIunits}
+\usepackage[squaren, Gray, cdot]{SIunits} %unités
 
 \usepackage{setspace}             % changer l'interlignage
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
@@ -26,28 +26,29 @@
 
 \input{./parts/page_garde.tex}
 
-\section*{Plan}
-\input{./parts/plan.tex}
+\tableofcontents
 
-\section*{\textcolor{cyan}{Objectifs}}
+\newpage
+
+\section{\textcolor{cyan}{Objectifs}}
 \input{./parts/objectifs.tex}
 
-\section*{\textcolor{cyan}{Introduction}}
+\section{\textcolor{cyan}{Introduction}}
 \input{./parts/intro.tex}
 
-\section*{\textcolor{cyan}{Matériel}}
+\section{\textcolor{cyan}{Matériel}}
 \input{./parts/materiel.tex}
 
-\section*{\textcolor{cyan}{Budget}}
+\section{\textcolor{cyan}{Budget}}
 \input{./parts/budget.tex}
 
-\section*{\textcolor{cyan}{Protocoles expérimentaux}}
+\section{\textcolor{cyan}{Protocoles expérimentaux}}
 \input{./parts/protocoles_exp.tex}
 
-\section*{\textcolor{cyan}{Perspectives}}
+\section{\textcolor{cyan}{Perspectives}}
 \input{./parts/perspectives.tex}
 
-\section*{Bibliographie}
-
+\bibliographystyle{plain}
+\bibliography{parts/bibliography}
 
 \end{document}
