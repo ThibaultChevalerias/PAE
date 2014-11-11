@@ -1,4 +1,4 @@
-\section*{Montages}
+\subsection{Montages}
 Pour effectuer l'étude du matériau considéré, on mesure la résistance de l'échantillon grâce à une mesure 4 pointes.
 On mesure en même temps la résistance d'une sonde de température qui a été étalonnée.
 Donc, à partir de ces données on peut en déduire la conductivité en fonction de la température.
@@ -11,14 +11,14 @@ La tendance attendue pour le Cuivre semblait être facile à obtenir (la résist
 Puis nous avons voulu effectuer une mesure sur un semi-conducteur, nous avons donc commandé deux wafers de Silicium (dopés N et P), et poursuivi les mesures avec ce Silicium.
 
 
-\subsection*{Schémas}
+\subsubsection{Schémas}
 
-\subsection*{Photos}
+\subsubsection{Photos}
 
 
-\section*{Conditions expérimentales}
+\subsection{Conditions expérimentales}
 Nous avons utilisé Labview pour réaliser les acquisitions des deux résistances mesurées.
-Nous avons simplement posé la plaque de Cuivre sur une plaque chauffante et mesuré sa résistance en fonction de la température en 4 pointes, entre 25\celsius et 205\celsius.
+Nous avons simplement posé la plaque de Cuivre sur une plaque chauffante et mesuré sa résistance en fonction de la température en 4 pointes, entre 25\celsius{} et 205\celsius{}.
 
 
 Pour le Silicium, nous voulions détecter un palier de conductivité (car il s'agissait d'échantillons dopés), et nous savions que ce palier risquait de se trouver à une température inférieure ou égale à la température ambiante.
@@ -28,20 +28,20 @@ La sonde de température a été insérée dans le porte-échantillon par un tro
 De ce fait, elle mesure bien mieux la température du silicium que si on l'avait simplement posée dessus.
 
 
-\paragraph*{Pourquoi une mesure 4 pointes (et pas tout simplement 2) ?}
+\paragraph{Pourquoi une mesure 4 pointes (et pas tout simplement 2) ?}
 La mesure 4 pointes consiste à injecter un courant avec deux pointes et à mesurer une tension avec deux autres placées entre les deux premières.
 Cette méthode permet de s'affranchir des résistances des fils et des résistances de contact.
 Elle est donc particulièrement utile pour mesurer des résistances de l'ordre de l'$\Omega$ ou inférieures, car c'est l'ordre de grandeur des résistances parasites.
 Par contre, elle est parfaitement inutile pour les hautes résistances (plusieurs k$\Omega$, M$\Omega$), donc on aurait mesuré en 2 pointes pour un isolant par exemple.
 
 
-\paragraph*{Principe de la sonde, comment a-t-on étalonné la sonde ?}
+\paragraph{Principe de la sonde, comment a-t-on étalonné la sonde ?}
 Nous avons étalonné la sonde Pt en deux étapes :
 
 
 \begin{itemize}
-  \item en la plaçant dans de l'eau que nous avons fait bouillir, nous avons pu mesurer la résistance de la sonde à une température de 100\celsius.
-  \item en la plaçant ensuite dans de l'eau pleine de glaçons, nous avons fait la même chose pour 0\celsius.
+  \item en la plaçant dans de l'eau que nous avons fait bouillir, nous avons pu mesurer la résistance de la sonde à une température de 100\celsius{}.
+  \item en la plaçant ensuite dans de l'eau pleine de glaçons, nous avons fait la même chose pour 0\celsius{}.
 \end{itemize}
 
 
@@ -49,18 +49,20 @@ La résistance du platine augmente linéairement avec la température, c'est une
 On obtient alors la caratéristique R(T) : en mesurant la résistance du Platine, on peut en déduire sa température (donc idéalement la température de l'échantillon).
 
 
-\paragraph*{Interfaçage grâce à Labview}
+\paragraph{Interfaçage grâce à Labview}
 L'utilisation de l'outil informatique pour mener à bien l'expérience était prévu pour cet AE 
 et en constituait une des principales caractéristiques. En effet notre encadrant nous avait fortement recommandé 
 d'automatiser les mesures pour faciliter la prise de donnée tout en gagnant du savoir faire expérimental. L'outil de 
 prédilection pour ce type de mesure est le logiciel LabVIEW qui permet de réaliser l'acquisition des données. 
 Nous avons donc décidé d'utiliser ce logiciel. Le but était de pouvoir contrôler les deux flukes avec l'ordinateur. 
 La prise de données par voie informatique comporte trois volets que nous avons du nous approprier successivement : 
+
 \begin{enumerate}
 \item la connection des appareils à l'ordinateur ; 
 \item leur reconnaissance par ce dernier ; 
 \item et le codage du code LabView. 
 \end{enumerate}
+
 La première étape a été réalisée grâce à deux cables smart488, dont l'un des deux qu'il a fallu commander. 
 Ces câbles permettent le passage d'une sortie GPIB à une sortie USB et possèdent un contrôleur intégré. 
 C'est ce contrôleur qu'il a fallu régler, grâce à un logiciel dédié, pour pouvoir détecter les deux flukes 
@@ -71,7 +73,7 @@ et à la résistance de l'échantillon. L'acquisition se fait pendant un laps de
 [Ajouter photo du code et de la "face avant" de labview + photo cable smart488]
 
 
-\section*{Difficultés expérimentales}
+\subsection{Difficultés expérimentales}
 Deux principales difficultées expérimentales se sont posées lors de cette activité expérimentale. 
 Tout d'abord il y a eu le problème de l'automatisation des résultats et de l'interfaçage avec l'ordinateur.
 On a eu du mal à réaliser chacune des trois étapes reliées à l'automatisation des mesures, mais plus particulièrement 
@@ -92,22 +94,22 @@ traverse où pas cette couche. Cependant lorsque on exerce une pression constant
 % /!\ non je ne pense pas que ce soit ça, c'est bien les contacts qui se modifient au cours du temps 
 % (à cause de la chaleur...). On parle de l'idée des ressorts pour améliorer ça ?
 
-\section*{Résultats}
+\subsection{Résultats}
 Pour le Cuivre, nous avons simplement observé que la conductivité diminue quand on augmente la température (voir courbe).
 [donner un ordre de grandeur de la conductivité du Cuivre sur cette plage de température si elle est bonne]
 
 
-Pour le Silicium, nous avons observé une conductivité croissante avec la température, ce qui est cohérent. Nous avons aussi observé un palier aux alentours de [20\celsius; 80\celsius], ce qui semble cohérent aussi.
+Pour le Silicium, nous avons observé une conductivité croissante avec la température, ce qui est cohérent. Nous avons aussi observé un palier aux alentours de [20\celsius{}; 80\celsius{}], ce qui semble cohérent aussi.
 À haute température, on observe à nouveau une croissance de la conductivité, 
 puis les contacts se sont dégradés donc on n'a pas pu monter plus haut en température.
 
 
-\subsection*{Tableaux}
+\subsubsection*{Tableaux}
 
-\subsection*{Courbes}
+\subsubsection*{Courbes}
 
 
-\section*{Discussion des résultats}
+\subsection{Discussion des résultats}
 
 L'endroit où se trouve le palier paraît cohérent, pour le Si il est autour de la température ambiante, c'est pourquoi le Si est utilisé dans l'électronique.
 
@@ -118,5 +120,5 @@ L'endroit où se trouve le palier paraît cohérent, pour le Si il est autour de
 %[double plateau, essaye de lire sur wiki pour bien comprendre on risque d'avoir des questions dessus/ le type de dopage n'est pas visible directement, peut etre en faisant un truc special avec la vitesse des porteurs mais je ne crois pas]]
 
 
-\section*{Conclusions}
+\subsection{Conclusions}
 
