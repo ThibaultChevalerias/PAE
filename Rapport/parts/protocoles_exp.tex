@@ -118,12 +118,18 @@ La première étape a été réalisée grâce à deux câbles \emph{smart488}, m
 Ces câbles permettent le passage d'une sortie GPIB à une sortie USB et possèdent un contrôleur intégré. 
 C'est ce contrôleur qu'il a fallu régler, grâce à un logiciel dédié, pour pouvoir détecter les deux multimètres 
 via l'ordinateur. Nous avons aussi utilisé le logiciel NI-Max pour vérifier la compatibilité de ces éléments avec Labview. 
-Après cela nous avons entamé l'étape d'écriture du code graphique Labview. Ce code devait nous permettre d'acquérir 
+Après cela nous avons entamé l'étape d'écriture du code graphique Labview [Figure \ref{code_labview}]. Ce code devait nous permettre d'acquérir 
 simultanément, et dans le temps, les signaux des deux multimètres, qui correspondent à la température de la sonde 
 et à la résistance de l'échantillon. L'acquisition se fait pendant un laps de temps prédéfini. Les résultats obtenus sont présentés sous forme de tableau de nombres dans un fichier texte qui peut être lisible par un logiciel comme gnuplot ou Excel.
 Nous avons en effet utilisé gnuplot par la suite pour tracer nos courbes.
 
-%[Ajouter photo du code et de la "face avant" de labview + photo cable smart488]
+\begin{figure}[!t]
+  \begin{center}
+		\includegraphics[height=6cm]{./images/labview.jpg}
+		\caption{Code de notre programme Labview}
+		\label{code_labview}
+	\end{center}
+\end{figure}
 
 
 \subsection{Difficultés expérimentales}
