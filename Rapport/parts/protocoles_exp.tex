@@ -143,26 +143,64 @@ multimètre, le câble smart488 et Labview.
 
 D'autre part le contact entre les électrodes et l'échantillon s'avéra bien plus délicat que prévu. 
 En effet l'utilisation du montage à quatre pointes oblige à avoir quatre contacts stables.
+
 Nous avons d'abord utilisé de la laque d'argent pour réaliser les contacts, mais cela ne s'est pas avéré facile à mettre en place ni très efficace.
-Nous avons donc implémenté le montage tel qu'il apparaît dans les photos [Figures \ref{photo1} à \ref{photo5}]. Le premier essai sur le cuivre donna des résultats 
+Nous avons donc implémenté le montage tel qu'il apparaît dans les photos [Figures \ref{photo1} à \ref{photo5}].
+
+Le premier essai sur le cuivre donna des résultats 
 très cohérents mais les essais sur les échantillons de silicium donnaient des valeurs très instables. 
 En effet la valeur de la résistance changeait de plusieurs ordres de grandeurs selon la pression exercée sur les 
-pointes. On soupçonne les fils et les pointes d'être a l'origine de ces fluctuations (contacts imparfaits), mais une piste intéressante est l'hétérogénéité de la surface de l'échantillon de silicium. 
+pointes.
+
+Nous soupçonnons les fils et les pointes d'être a l'origine de ces fluctuations (contacts imparfaits), mais une piste intéressante est l'hétérogénéité de la surface de l'échantillon de silicium. 
 En effet le silicium au contact de l'air s'oxyde et on obtient une couche de SiO2 à la surface de l'échantillon. 
 La variation de la résistance selon la pression exercée sur les pointes peut donc provenir du fait que la pointe 
-traverse où pas cette couche. Cependant lorsque on exerce une pression constante on obtient des résultats cohérents avec la nature semiconductrice du silicium comme on pourra le voir dans nos résultats. Une façon d'obtenir cette pression constante et donc un meilleur contact est d'utiliser des pointes à ressorts, fixées solidement au support. Cependant nous n'avons pas pu nous procurer de tels contacts avant la fin de l'activité et nous avons du réaliser plusieurs fois la même expérience jusqu'à obtenir une mesure stable.
+traverse où pas cette couche.
+
+Cependant lorsque on exerce une pression constante on obtient des résultats cohérents avec la nature semiconductrice du silicium comme on pourra le voir dans nos résultats. Une façon d'obtenir cette pression constante et donc un meilleur contact est d'utiliser des pointes à ressorts, fixées solidement au support. Cependant nous n'avons pas pu nous procurer de tels contacts avant la fin de l'activité et nous avons du réaliser plusieurs fois la même expérience jusqu'à obtenir une mesure stable.
 
 \subsection{Résultats}
-Pour le cuivre, nous avons simplement observé que la conductivité diminue quand on augmente la température (voir courbe).
-[donner un ordre de grandeur de la conductivité du cuivre sur cette plage de température si elle est bonne]
+Pour commencer et avant de s'attaquer à une mesure sur un semiconducteur qui s'annonçait complexe, nous avons testé notre montage avec une mesure sur un conducteur très simple : une plaque de cuivre.
 
+Nous avons posé la plaque de Cu sur une plaque chauffante, et nous avons mesuré sa une résistance en 4 pointes pour des températures allant de la température ambiante (environ 20 \celsius{}) à envrion 200 \celsius{}. La sonde Pt100 était posée sur la plaque pour suivre la température, comme on peut le voir sur la Figure \ref{photo2}. Toutes les mesures ont été prises grâce à notre interfaçage avec Labview.
 
-Pour le silicium, nous avons observé une conductivité croissante avec la température, ce qui est cohérent. Nous avons aussi observé un palier aux alentours de [20\celsius{}; 80\celsius{}], ce qui semble cohérent aussi.
-À haute température, on observe à nouveau une croissance de la conductivité, 
-puis les contacts se sont dégradés donc on n'a pas pu monter plus haut en température.
+Nous avons ainsi observé très logiquement une augmentation de la résistance de la plaque en fonction de la température. On peut observer cette tendance sur la Figure \ref{courbe_cuivre}, sur laquelle une régression linéaire a été effectuée et pour laquelle on obtient un bon coefficient de corrélation : $R > 0.99$.
 
-\subsubsection{Courbes}
+Ceci est bien en phase avec le modèle de Drude de la conduction électrique, pour lequel la conductivité d'un métal a cette expression (voir \cite{kittel_introduction_1976}) : 
+\begin{equation}
+	\sigma = \frac{n e^{2} \tau}{m}
+\end{equation}
+$n$ étant la densité volumique d'électrons, $e$ et $m$ la charge et la masse des électrons, et $\tau$ le temps de vol moyen entre deux collisions d'électrons. Plus la température augmente, plus le taux de collisions entre électrons augmente et donc plus $\tau$ diminue, ainsi $\sigma$ diminue et la résistance de l'échantillon augmente.
 
+\begin{figure}[!b]
+  \begin{center}
+		\includegraphics[width=11cm]{./images/Resistance_Cuivre_finale_english.png}
+		\caption{Résistance de la plaque de cuivre en fonction de la température. En vert la régression linéaire et ses caractéristiques.}
+		\label{courbe_cuivre}
+	\end{center}
+\end{figure}
+
+\newpage
+
+Ensuite, nous avons réalisé la mesure pour un wafer de silicium dopé de type N. Il a été placé sur un lit de billes de verre, billes dans lesquelles la sonde de température était placée (voir Figure \ref{photo4}). Là encore, la mesure a été effectuée en 4 pointes et avec l'aide de Labview une première fois infructueuse, puis sans Labview pour pouvoir mieux contrôler le déroulement de la mesure. Les mesures ont donc été notées à la main.
+
+Nous avons bien observé une conductivité croissante avec la température comme prévu, avec un palier aux alentours de [20\celsius{}; 80\celsius{}]. On peut observer les trois régimes différents sur la Figure \ref{courbe_silicium}.
+
+Le premier régime (A), allant d'environ -100 \celsius{} à 14 \celsius{} suit une loi d'Arrhénius.
+
+Le second régime (B), est un palier allant d'environ 14 \celsius{} à 86 \celsius{}. La conductivité décroît faiblement dans cet intervalle de température.
+
+Le dernier régime (C) suit une loi d'Arrhénius entre 86 \celsius{} et 150 \celsius{} environ, comme le premier régime.
+
+Nous n'avons pas pu mesurer en-dessous de -100 \celsius{} environ car l'échantillon même baigné dans l'azote se réchauffait trop vite. De même, nous n'avons pas poursuivi la montée en température au delà de 200 \celsius{} car déjà entre 150 \celsius{} et 200 \celsius{} les contacts se sont dégradés et les mesures devenaient aberrantes.
+
+\begin{figure}[hb]
+  \begin{center}
+		\includegraphics[width=12cm]{./images/Conductivite_Silicium_finale_english.png}
+		\caption{Conductivité du wafer de silicium de type N en fonction de la température. Les trois régimes sont notés A, B et C. Le régime A est une croissance en loi d'Arrhénius pour les électrons venant des impuretés. Le régime B est un palier. Le régime C est lui aussi en loi d'Arrhénius, cette fois-ci pour les électrons venant de la bande de valence.}
+		\label{courbe_silicium}
+	\end{center}
+\end{figure}
 
 \subsection{Discussion des résultats}
 
