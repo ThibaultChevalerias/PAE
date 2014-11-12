@@ -65,72 +65,72 @@ Nous avons simplement posé la plaque de cuivre sur une plaque chauffante et mes
 Pour le silicium, nous voulions détecter un palier de conductivité (car il s'agissait d'échantillons dopés), et nous savions que ce palier risquait de se trouver à une température inférieure ou égale à la température ambiante.
 Donc, pour pouvoir étudier ce palier, nous avons dû baisser fortement la température et nous avons utilisé de l'azote liquide pour cela.
 Nous avons également placé des billes de verre dans notre porte-échantillon pour augmenter l'inertie thermique du montage et nous permettre d'avoir une montée en température relativement lente.
-La sonde de température a été insérée dans le porte-échantillon par un trou percé sur le côté (voir montage). De cette façon, elle peut être en contact du silicium et être entourée par les billes de verre.
-De ce fait, elle mesure bien mieux la température du silicium que si on l'avait simplement posée dessus.
+La sonde de température a été insérée dans le porte-échantillon par un trou percé sur le côté (voir Figure \ref{photo4}). De cette façon, elle peut être en contact du silicium et être entourée par les billes de verre.
+De ce fait, elle mesure bien mieux la température du silicium que si on l'avait simplement posée sur l'échantillon.
 
 
 \paragraph{Pourquoi une mesure 4 pointes (et pas tout simplement 2) ?}
 La mesure 4 pointes consiste à injecter un courant avec deux pointes et à mesurer une tension avec deux autres placées entre les deux premières.
 Cette méthode permet de s'affranchir des résistances des fils et des résistances de contact.
 Elle est donc particulièrement utile pour mesurer des résistances de l'ordre de l'$\Omega$ ou inférieures, car c'est l'ordre de grandeur des résistances parasites.
-Par contre, elle est parfaitement inutile pour les hautes résistances (plusieurs k$\Omega$, M$\Omega$), donc on aurait mesuré en 2 pointes pour un isolant par exemple.
+Par contre, elle est peu utile pour les hautes résistances (plusieurs k$\Omega$, M$\Omega$), donc nous aurions mesuré en 2 pointes pour un isolant par exemple.
 
 
-\paragraph{Principe de la sonde, comment a-t-on étalonné la sonde ?}
+\paragraph{Principe et étalonnage de la sonde}
 Nous avons étalonné la sonde Pt en deux étapes :
-
 
 \begin{itemize}
   \item en la plaçant dans de l'eau que nous avons fait bouillir, nous avons pu mesurer la résistance de la sonde à une température de 100\celsius{}.
   \item en la plaçant ensuite dans de l'eau pleine de glaçons, nous avons fait la même chose pour 0\celsius{}.
 \end{itemize}
 
-
-La résistance du platine augmente linéairement avec la température, c'est une propriété de ce matériau.
+La résistance du platine augmente très linéairement avec la température, c'est une propriété de ce matériau.
 On obtient alors la caratéristique R(T) : en mesurant la résistance du Platine, on peut en déduire sa température (donc idéalement la température de l'échantillon).
 
 
 \paragraph{Interfaçage grâce à Labview}
 L'utilisation de l'outil informatique pour mener à bien l'expérience était prévu pour cet AE 
 et en constituait une des principales caractéristiques. En effet notre encadrant nous avait fortement recommandé 
-d'automatiser les mesures pour faciliter la prise de donnée tout en gagnant du savoir faire expérimental. L'outil de 
-prédilection pour ce type de mesure est le logiciel LabVIEW qui permet de réaliser l'acquisition des données. 
-Nous avons donc décidé d'utiliser ce logiciel. Le but était de pouvoir contrôler les deux flukes avec l'ordinateur. 
-La prise de données par voie informatique comporte trois volets que nous avons du nous approprier successivement : 
+d'automatiser les mesures pour faciliter la prise de données tout en gagnant en savoir-faire expérimental. L'outil de 
+prédilection pour ce type de mesure est le logiciel \emph{LabVIEW} qui permet de réaliser l'acquisition et le traitement des données. 
+Nous avons donc décidé d'utiliser ce logiciel. Le but était de pouvoir contrôler les deux multimètres avec l'ordinateur. 
+La prise de données par voie informatique comporte trois volets que nous avons dû nous approprier successivement : 
 
 \begin{enumerate}
-\item la connection des appareils à l'ordinateur ; 
+\item la connexion des appareils à l'ordinateur ; 
 \item leur reconnaissance par ce dernier ; 
 \item et le codage du code LabView. 
 \end{enumerate}
 
-La première étape a été réalisée grâce à deux cables smart488, dont l'un des deux qu'il a fallu commander. 
+La première étape a été réalisée grâce à deux câbles \emph{smart488}, mais le laboratoire n'ayant qu'un seul câble de ce type, nous avons dû en commander en deuxième.
 Ces câbles permettent le passage d'une sortie GPIB à une sortie USB et possèdent un contrôleur intégré. 
-C'est ce contrôleur qu'il a fallu régler, grâce à un logiciel dédié, pour pouvoir détecter les deux flukes 
-par l'ordinateur. On a aussi utilisé le logiciel NiMax pour vérifier la compatibilité avec Labview. 
-Après cela on a entamé l'étape d'écriture du code graphique Labview. Ce code devait nous permettre d'acquérir 
+C'est ce contrôleur qu'il a fallu régler, grâce à un logiciel dédié, pour pouvoir détecter les deux multimètres 
+via l'ordinateur. Nous avons aussi utilisé le logiciel NI-Max pour vérifier la compatibilité de ces éléments avec Labview. 
+Après cela nous avons entamé l'étape d'écriture du code graphique Labview. Ce code devait nous permettre d'acquérir 
 simultanément, et dans le temps, les signaux des deux multimètres, qui correspondent à la température de la sonde 
-et à la résistance de l'échantillon. L'acquisition se fait pendant un laps de temps prédéfini. Les résultats obtenus sont présentés sous forme de tableau qui peut être lisible par un logiciel comme gnuplot.
+et à la résistance de l'échantillon. L'acquisition se fait pendant un laps de temps prédéfini. Les résultats obtenus sont présentés sous forme de tableau de nombres dans un fichier texte qui peut être lisible par un logiciel comme gnuplot ou Excel.
+Nous avons en effet utilisé gnuplot par la suite pour tracer nos courbes.
 [Ajouter photo du code et de la "face avant" de labview + photo cable smart488]
 
 
 \subsection{Difficultés expérimentales}
-Deux principales difficultées expérimentales se sont posées lors de cette activité expérimentale. 
+Deux principales difficultés expérimentales se sont posées lors de cette activité expérimentale.
 Tout d'abord il y a eu le problème de l'automatisation des résultats et de l'interfaçage avec l'ordinateur.
-On a eu du mal à réaliser chacune des trois étapes reliées à l'automatisation des mesures, mais plus particulièrement 
-pour la détection des instruments par l'ordinateur parce que cela mettait en jeu différents composants tels que le 
-multimètre, le cable smart488 et labview.
+Nous avons eu du mal à réaliser chacune des trois étapes liées à l'automatisation des mesures, mais plus particulièrement 
+pour la détection des instruments par l'ordinateur, ceci mettant en jeu différents composants tels que le 
+multimètre, le câble smart488 et Labview.
 
 D'autre part le contact entre les électrodes et l'échantillon s'avéra bien plus délicat que prévu. 
-En effet l'utilisation du montage à quatre pointes oblige à avoir quatre contacts stables. On a donc implémenté 
-le montage tel qu'il apparait dans la figure [figure du montage]. Le premier essai sur le cuivre donna des résultats 
+En effet l'utilisation du montage à quatre pointes oblige à avoir quatre contacts stables.
+Nous avons d'abord utilisé de la laque d'argent pour réaliser les contacts, mais cela ne s'est pas avéré facile à mettre en place ni très efficace.
+Nous avons donc implémenté le montage tel qu'il apparaît dans les photos [Figures \ref{photo1} à \ref{photo5}]. Le premier essai sur le cuivre donna des résultats 
 très cohérents mais les essais sur les échantillons de silicium donnaient des valeurs très instables. 
 En effet la valeur de la résistance changeait de plusieurs ordres de grandeurs selon la pression exercée sur les 
 pointes. On soupçonnait les fils ou les pointes d'être a l'origine de ces fluctuations 
-mais on compris plus tard que cela était probablement dû à l'hétérogénité de la surface de l'échantillon de silicium. 
+mais on compris plus tard que cela était probablement dû à l'hétérogénéité de la surface de l'échantillon de silicium. 
 En effet le silicium au contact de l'air s'oxyde et on obtient une couche de SiO2 à la surface de l'échantillon. 
 La variation de la résistance selon la pression exercée sur les pointes peut donc provenir du fait que la pointe 
-traverse où pas cette couche. Cependant lorsque on exerce une pression constante on obtient des résultats cohérents avec la nature semiconductrice du silicium comme on pourra le voir dans nos résultats. Une façon d'obtenir cette pression constante et donc un meilleur contact est d'utiliser des pointes avec à ressorts fixées solidement au support. Cependant on a pas pu se procurer de tels contacts avant la fin de l'activité et nous avons du réaliser plusieurs fois la même éxpérience jusqu'à obtenir une valeur stable.
+traverse où pas cette couche. Cependant lorsque on exerce une pression constante on obtient des résultats cohérents avec la nature semiconductrice du silicium comme on pourra le voir dans nos résultats. Une façon d'obtenir cette pression constante et donc un meilleur contact est d'utiliser des pointes avec à ressorts fixées solidement au support. Cependant nous n'avons pas pu nous procurer de tels contacts avant la fin de l'activité et nous avons du réaliser plusieurs fois la même expérience jusqu'à obtenir une mesure stable.
 
 % /!\ non je ne pense pas que ce soit ça, c'est bien les contacts qui se modifient au cours du temps 
 % (à cause de la chaleur...). On parle de l'idée des ressorts pour améliorer ça ?
