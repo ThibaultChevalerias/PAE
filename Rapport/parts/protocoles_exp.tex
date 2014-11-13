@@ -184,7 +184,7 @@ $n$ étant la densité volumique d'électrons, $e$ et $m$ la charge et la masse 
 
 Ensuite, nous avons réalisé la mesure pour un wafer de silicium dopé de type N. Il a été placé sur un lit de billes de verre, billes dans lesquelles la sonde de température était placée (voir Figure \ref{photo4}). Là encore, la mesure a été effectuée en 4 pointes et avec l'aide de Labview une première fois infructueuse, puis sans Labview pour pouvoir mieux contrôler le déroulement de la mesure. Les mesures ont donc été notées à la main.
 
-Nous avons bien observé une conductivité croissante avec la température comme prévu, avec un palier aux alentours de [20\celsius{}; 80\celsius{}]. On peut observer les trois régimes différents sur la Figure \ref{courbe_silicium}.
+Nous avons bien observé une conductivité croissante avec la température comme prévu, avec un palier aux alentours de [20\celsius{}; 80\celsius{}], ce qui est cohérent avec ce qu'on peut trouver dans \cite{kittel_introduction_1976}. On peut observer les trois régimes différents sur la Figure \ref{courbe_silicium}.
 
 Le premier régime (A), allant d'environ -100 \celsius{} à 14 \celsius{} suit une loi d'Arrhénius.
 
@@ -203,10 +203,43 @@ Nous n'avons pas pu mesurer en-dessous de -100 \celsius{} environ car l'échanti
 \end{figure}
 
 \subsection{Discussion des résultats}
+Pour bien interpréter ces résultats, revenons sur le principe de dopage. L'échantillon étudie est dopé avec des atomes de phosphore, qui sont insérées dans l'échantillon initial de silicium. Ceci revient à introduire des niveaux d'énergie supplémentaires entre la bande de valence et la bande de conduction (voir Figure \ref{doping}).
 
-L'endroit où se trouve le palier paraît cohérent, pour le Si il est autour de la température ambiante (cf. \cite{kittel_introduction_1976}), 
-c'est pourquoi le Si est utilisé dans l'électronique.
+\begin{figure}[ht]
+  \begin{center}
+		\includegraphics[width=5cm]{./images/doping.png}
+		\caption{Les impuretés génèrent des niveaux d'énergie supplémentaires, ce qui nous amène à la configuration de cette figure.}
+		\label{doping}
+	\end{center}
+\end{figure}
 
+On peut ainsi expliciter les mécanismes qui nous amènent à observer ces trois régimes pendant qu'on augmente la température : 
+\begin{description}
+\item[Température très basse (non observé) : ] Pour de très basses températures, les fluctuations thermiques n'apportent pas assez d'énergie aux électrons pour qu'ils passent dans la bande de conduction, le matériau est donc \emph{isolant}.
+\item[Régime A : ] Ensuite, au fur et à mesure que la température augmente, de plus en plus d'électrons venant des impuretés peuvent acquérir suffisamment d'énergie pour passer dans la bande de conduction et donc conduire le courant, le matériau devient donc \emph{conducteur}. Il est d'autant plus conducteur que la température est grande car de plus en plus d'électrons peuvent être promus dans la bande de conduction puisque l'énergie thermique qu'ils peuvent recevoir augmente.
+\item[Régime B : ] Quand tous les électrons venant des impuretés sont passés dans la bande de conduction mais que l'énergie thermique n'est pas encore suffisante pour promouvoir les électrons de la bande de valence, il n'y a pas de nouvelle contribution à la conduction quelle que soit la température. Nous observons donc un palier, et même une légère diminution de la conductivité. En effet, comme dans un métal, le taux de collision entre électrons augmente avec la température, ce qui diminue la conductivité.
+\item[Régime C : ] Enfin, quand l'énergie thermique est suffisante, les électrons de la bande de valence commencent à passer dans la bande de conduction comme dans le cas du régime A avec les impuretés. On a donc une seconde phase de croissance.
+\end{description}
+
+Les deux phases de croissance observées (A et C) suivent une loi d'Arrhénius, c'est-à-dire une loi faisant intervenir une probabilité de transition (vers la bande de conduction en l'occurence) dépendant d'une énergie d'activation (ici la moitié de l'énergie du "gap" entre les bandes considérées). On a donc une densité $n$ d'électrons dans la bande de conduction de la forme : 
+\begin{equation}
+	n \propto exp \left( - \frac{\Delta E}{2 k_{B} T} \right)
+\end{equation}
+où $\Delta E$ représente la différence d'énergie entre la bande de conduction et les niveaux d'énergie des impuretés si on considère la densité d'électrons venant des impuretés ; ou bien la différence d'énergie entre la bande de conduction et la bande de valence si on prend en compte la densité d'électrons venant de cette dernière.
+
+Puisque la conductivité du semiconducteur est proportionnelle à la densité d'électrons dans la bande de conduction, on obtient bien une loi d'Arrhénius tantôt pour les électrons venant des impuretés, puis pour ceux venant de la bande de valence.
+
+Pour vérifier que ces courbes montrent bien deux croissances suivant une loi d'Arrhénius, nous avons tracé le logarithme de la conductivité en fonction de $-\frac{1}{T}$, courbe qui devrait être une droite. Nous avons donc effectué deux régressions linéaires sur les deux zones de croissance (voir Figure \ref{log}).
+
+\begin{figure}[!b]
+  \begin{center}
+		\includegraphics[width=11cm]{./images/Fit_de_log(sigma)_versus_-inverse(T).png}
+		\caption{Tracé de log($\sigma$) en fonction de $-\frac{1}{T}$. Deux régressions linéaires ont été effectuées sur les deux zones de croissance en loi d'Arrhénius.}
+		\label{log}
+	\end{center}
+\end{figure}
+
+Nous avons éliminé certains points pour les régressions, notamment les points à basse température qui ne semblaient pas faire partie de la zone de croissance du régime A. À partir de ces régressions, nous avons pu estimer les énergies d'activation et donc les gaps $\Delta E$. Le gap entre la bande de conduction et les niveaux d'énergie des impuretés est d'environ $\Delta E = 0.2 eV$, et le gap entre les bandes de valence et de conduction est d'environ $\Delta E = 0.7 eV$. Cette valeur est tout à fait du bon ordre de grandeur pour du silicium (voir \cite{kittel_introduction_1976}), et le gap concernant les impuretés est $3.5$ fois plus faible, ce qui paraît raisonnable.
 
 \subsection{Conclusions}
-
+Nous avons bien trouvé une allure de conductivité singulière pour notre échantillon de silicium dopé N. Nous avons dégagé trois régimes décrivant cette allure, qui sont tout à fait cohérents avec les phénomènes physiques en jeu. Nous avons ainsi pu déterminer un palier de conductivité entre la température ambiante et 80 \celsius{} environ.
